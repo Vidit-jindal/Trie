@@ -9,3 +9,11 @@ const templates = document.getElementsByTagName('template')[0];
     const delete_info = document.getElementById("delete_input");
     const info = document.getElementById("info");
     const contact_list = new Trie();
+    
+    add.onclick = function () {
+        let details = contact_info.value;
+        details = details.split(',');
+        if(details.length!==2){
+            alert("Incorrectly formatted input");
+            return;
+        }
