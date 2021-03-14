@@ -23,3 +23,8 @@ const templates = document.getElementsByTagName('template')[0];
             alert("Incorrectly formatted input");
             return;
         }
+
+        contact_list.add(details[1], details[0]);
+        info.innerHTML += details + " added to contact list<br>";
+        contact_info.value = "";
+    };
