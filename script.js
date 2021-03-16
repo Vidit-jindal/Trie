@@ -28,3 +28,14 @@ const templates = document.getElementsByTagName('template')[0];
         info.innerHTML += details + " added to contact list<br>";
         contact_info.value = "";
     };
+    
+    del.onclick = function () {
+        let details = delete_info.value.trim();
+        if(details.length!==6){
+            alert("Incorrectly formatted input");
+            return;
+        }
+        contact_list.del(details);
+        info.innerHTML += details + " deleted from contact list<br>";
+        delete_info.value = "";
+    };
