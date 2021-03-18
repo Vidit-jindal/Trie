@@ -39,3 +39,11 @@ const templates = document.getElementsByTagName('template')[0];
         info.innerHTML += details + " deleted from contact list<br>";
         delete_info.value = "";
     };
+
+    let autocomplete = (inp) => {
+
+        /*the autocomplete function takes two arguments,
+         the text field element and an array of possible autocompleted values:*/
+
+        let currentFocus;
+        inp.input = "";
