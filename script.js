@@ -47,3 +47,10 @@ const templates = document.getElementsByTagName('template')[0];
 
         let currentFocus;
         inp.input = "";
+        /*execute a function when someone writes in the text field:*/
+        inp.addEventListener("input", function (e) {
+            let a, //OUTER html: variable for listed content with html-content
+                val = this.value;
+
+            /*close any already open lists of autocompleted values*/
+            closeAllLists();
