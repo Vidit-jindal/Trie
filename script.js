@@ -54,3 +54,14 @@ const templates = document.getElementsByTagName('template')[0];
 
             /*close any already open lists of autocompleted values*/
             closeAllLists();
+            
+            if( val.length>=7 )
+                return;
+
+            currentFocus = -1;
+
+            /*create a DIV element that will contain the items (values):*/
+            a = document.createElement("DIV");
+
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items list-group text-left");
