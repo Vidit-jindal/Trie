@@ -65,3 +65,8 @@ const templates = document.getElementsByTagName('template')[0];
 
             a.setAttribute("id", this.id + "autocomplete-list");
             a.setAttribute("class", "autocomplete-items list-group text-left");
+
+            /*append the DIV element as a child of the autocomplete container:*/
+            this.parentNode.appendChild(a);
+
+            let arr = [];
