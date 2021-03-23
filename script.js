@@ -70,3 +70,13 @@ const templates = document.getElementsByTagName('template')[0];
             this.parentNode.appendChild(a);
 
             let arr = [];
+
+             if(val.length === this.input.length){
+                arr = contact_list.findNext(-2);
+            } else if(val.length < this.input.length){
+                this.input = val;
+                arr = contact_list.findNext(-1);
+            } else{
+                this.input = val;
+                arr = contact_list.findNext(this.input[this.input.length-1]);
+            }
