@@ -80,3 +80,12 @@ const templates = document.getElementsByTagName('template')[0];
                 this.input = val;
                 arr = contact_list.findNext(this.input[this.input.length-1]);
             }
+
+            /*for each item in the array...*/
+            for (let i = 0; i < Math.min(arr.length,6) ; i++) {
+                let item = contact_item.cloneNode(true);
+                // Setting name, message, image to template item
+                item.querySelector('#Name').innerText = arr[i].name;
+                item.querySelector('#Number').innerHTML = "<strong>" + arr[i].number.substr(0, val.length) +
+                                                            "</strong>" + arr[i].number.substr(val.length);
+                item.number = arr[i].number;
