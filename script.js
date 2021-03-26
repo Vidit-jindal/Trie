@@ -105,3 +105,12 @@ const templates = document.getElementsByTagName('template')[0];
 
         /*execute a function presses a key on the keyboard:*/
         inp.addEventListener("keydown", function (e) {
+
+            let x = document.getElementById(this.id + "autocomplete-list");
+            if (x) x = x.getElementsByTagName("div");
+            if (e.keyCode === 40) {
+                /*If the arrow DOWN key is pressed,
+                 increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
