@@ -98,3 +98,10 @@ const templates = document.getElementsByTagName('template')[0];
                     closeAllLists();
                     alert("Calling "+item.number);
                 });
+
+                 a.appendChild(item);
+            }
+        });
+
+        /*execute a function presses a key on the keyboard:*/
+        inp.addEventListener("keydown", function (e) {
