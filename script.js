@@ -131,3 +131,14 @@ const templates = document.getElementsByTagName('template')[0];
                 }
             }
         });
+
+        let addActive = (x) => {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = x.length - 1;
+            /*add class "autocomplete-active":*/
+            x[currentFocus*2].classList.add("active");
+        };
