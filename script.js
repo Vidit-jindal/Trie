@@ -159,3 +159,10 @@ const templates = document.getElementsByTagName('template')[0];
                 }
             }
         };
+        
+        /*execute a function when someone clicks in the document:*/
+        document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+        });
+
+    };
