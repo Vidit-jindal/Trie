@@ -142,3 +142,9 @@ const templates = document.getElementsByTagName('template')[0];
             /*add class "autocomplete-active":*/
             x[currentFocus*2].classList.add("active");
         };
+        let removeActive = (x) => {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (let i = 0; i < x.length; i++) {
+                x[i].classList.remove("active");
+            }
+        };
