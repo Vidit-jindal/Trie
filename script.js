@@ -148,3 +148,14 @@ const templates = document.getElementsByTagName('template')[0];
                 x[i].classList.remove("active");
             }
         };
+        
+        let closeAllLists = (elmnt) => {
+            /*close all autocomplete lists in the document,
+             except the one passed as an argument:*/
+            const x = document.getElementsByClassName("autocomplete-items");
+            for (let i = 0; i < x.length; i++) {
+                if (elmnt !== x[i] && elmnt !== inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                }
+            }
+        };
