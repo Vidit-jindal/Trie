@@ -1,7 +1,9 @@
+
 import {Trie} from './Trie.js';
 
 onload = function () {
-const templates = document.getElementsByTagName('template')[0];
+
+    const templates = document.getElementsByTagName('template')[0];
     const contact_item = templates.content.querySelector("div");
     const add = document.getElementById("add");
     const contact_info = document.getElementById("contact_input");
@@ -9,7 +11,7 @@ const templates = document.getElementsByTagName('template')[0];
     const delete_info = document.getElementById("delete_input");
     const info = document.getElementById("info");
     const contact_list = new Trie();
-    
+
     add.onclick = function () {
         let details = contact_info.value;
         details = details.split(',');
@@ -23,12 +25,11 @@ const templates = document.getElementsByTagName('template')[0];
             alert("Incorrectly formatted input");
             return;
         }
-
         contact_list.add(details[1], details[0]);
         info.innerHTML += details + " added to contact list<br>";
         contact_info.value = "";
     };
-    
+
     del.onclick = function () {
         let details = delete_info.value.trim();
         if(details.length!==6){
@@ -47,6 +48,7 @@ const templates = document.getElementsByTagName('template')[0];
 
         let currentFocus;
         inp.input = "";
+
         /*execute a function when someone writes in the text field:*/
         inp.addEventListener("input", function (e) {
             let a, //OUTER html: variable for listed content with html-content
@@ -54,7 +56,7 @@ const templates = document.getElementsByTagName('template')[0];
 
             /*close any already open lists of autocompleted values*/
             closeAllLists();
-            
+
             if( val.length>=7 )
                 return;
 
@@ -70,8 +72,7 @@ const templates = document.getElementsByTagName('template')[0];
             this.parentNode.appendChild(a);
 
             let arr = [];
-
-             if(val.length === this.input.length){
+            if(val.length === this.input.length){
                 arr = contact_list.findNext(-2);
             } else if(val.length < this.input.length){
                 this.input = val;
@@ -89,6 +90,7 @@ const templates = document.getElementsByTagName('template')[0];
                 item.querySelector('#Number').innerHTML = "<strong>" + arr[i].number.substr(0, val.length) +
                                                             "</strong>" + arr[i].number.substr(val.length);
                 item.number = arr[i].number;
+
                 /*execute a function when someone clicks on the item value (DIV element):*/
                 item.addEventListener("click", function (e) {
                     /*insert the value for the autocomplete text field:*/
@@ -98,14 +100,12 @@ const templates = document.getElementsByTagName('template')[0];
                     closeAllLists();
                     alert("Calling "+item.number);
                 });
-
-                 a.appendChild(item);
+                a.appendChild(item);
             }
         });
 
         /*execute a function presses a key on the keyboard:*/
         inp.addEventListener("keydown", function (e) {
-
             let x = document.getElementById(this.id + "autocomplete-list");
             if (x) x = x.getElementsByTagName("div");
             if (e.keyCode === 40) {
@@ -114,15 +114,14 @@ const templates = document.getElementsByTagName('template')[0];
                 currentFocus++;
                 /*and and make the current item more visible:*/
                 addActive(x);
-
-                } else if (e.keyCode === 38) {
+            } else if (e.keyCode === 38) {
                 //up
                 /*If the arrow UP key is pressed,
                  decrease the currentFocus variable:*/
                 currentFocus--;
                 /*and and make the current item more visible:*/
                 addActive(x);
-                    } else if (e.keyCode === 13) {
+            } else if (e.keyCode === 13) {
                 /*If the ENTER key is pressed, prevent the form from being submitted,*/
                 e.preventDefault();
                 if (currentFocus > -1) {
@@ -142,13 +141,14 @@ const templates = document.getElementsByTagName('template')[0];
             /*add class "autocomplete-active":*/
             x[currentFocus*2].classList.add("active");
         };
+
         let removeActive = (x) => {
             /*a function to remove the "active" class from all autocomplete items:*/
             for (let i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
             }
         };
-        
+
         let closeAllLists = (elmnt) => {
             /*close all autocomplete lists in the document,
              except the one passed as an argument:*/
@@ -159,10 +159,14 @@ const templates = document.getElementsByTagName('template')[0];
                 }
             }
         };
-        
+
         /*execute a function when someone clicks in the document:*/
         document.addEventListener("click", function (e) {
             closeAllLists(e.target);
         });
 
     };
+
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    autocomplete(document.getElementById("myInput"));
+};
