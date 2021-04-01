@@ -2,3 +2,10 @@ html,
 body {
     height: 100%;
 }
+
+.text_box {
+    padding: 50px;
+    width: 50%;
+    align-content: center;
+    border: 1px solid #eeeeee;
+}
