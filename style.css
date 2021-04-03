@@ -17,3 +17,9 @@ body {
     display: flex;
     margin: 0 auto;
 }
+
+.center_input {
+    width: 40%;
+    display: flex;
+    margin: 20px auto auto;
+}
