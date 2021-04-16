@@ -31,3 +31,10 @@ class Trie {
             this.add(init[i][1], init[i][0], 0);
         }
     }
+
+    add(number, name, pos = 0, node = this.root){
+
+        if(pos===number.length-1){
+            node.children[number[pos]-'0'] = new ContactNode(name, number, node);
+            return;
+        }
