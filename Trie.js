@@ -26,3 +26,8 @@ class Trie {
             ["Shriya", "123654"],
             ["Prateek", "123465"]
         ];
+
+        for(let i=0;i<init.length;i++){
+            this.add(init[i][1], init[i][0], 0);
+        }
+    }
