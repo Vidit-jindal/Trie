@@ -14,3 +14,15 @@ class ContactNode{
         this.parent = parent;
     }
 }
+
+class Trie {
+    constructor(){
+        this.root = new TrieNode();
+        this.current = this.root;
+
+        let init = [
+            ["Aarnav", "123456"],
+            ["Akul", "123546"],
+            ["Shriya", "123654"],
+            ["Prateek", "123465"]
+        ];
