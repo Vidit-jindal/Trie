@@ -38,3 +38,11 @@ class Trie {
             node.children[number[pos]-'0'] = new ContactNode(name, number, node);
             return;
         }
+
+        if(node.children[number[pos]-'0']===null){
+            let newnode = new TrieNode();
+            node.children[number[pos]-'0'] = newnode;
+            newnode.parent = node;
+        }
+        this.add(number, name, pos+1, node.children[number[pos]-'0']);
+    }
