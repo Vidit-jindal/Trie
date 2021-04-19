@@ -70,3 +70,10 @@ class Trie {
                 this.current.children[step-'0'] = newnode;
                 newnode.parent = this.current;
             }
+            
+            this.current = this.current.children[step-'0'];
+        }
+        this.res = [];
+        this.findAll(this.current);
+        return this.res;
+    }
