@@ -60,3 +60,13 @@ class Trie {
             this.findAll(node.children[i]);
         }
     }
+    
+    findNext(step){
+        if(step===-1){
+            this.current = this.current.parent;
+        } else if(step!==-2) {
+            if(this.current.children[step-'0']===null){
+                let newnode = new TrieNode();
+                this.current.children[step-'0'] = newnode;
+                newnode.parent = this.current;
+            }
