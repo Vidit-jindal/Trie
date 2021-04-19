@@ -46,3 +46,17 @@ class Trie {
         }
         this.add(number, name, pos+1, node.children[number[pos]-'0']);
     }
+    findAll(node){
+        // Contact leaf node
+        if(node===null)
+            return;
+
+        if(node instanceof ContactNode){
+            this.res.push(node);
+            return;
+        }
+
+        for(let i=0;i<10;i++){
+            this.findAll(node.children[i]);
+        }
+    }
