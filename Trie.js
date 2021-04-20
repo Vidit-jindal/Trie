@@ -77,3 +77,9 @@ class Trie {
         this.findAll(this.current);
         return this.res;
     }
+    
+    del(number, pos = 0, node = this.root){
+        if(pos===number.length-1){
+            node.children[number[pos]-'0'] = null;
+            return;
+        }
