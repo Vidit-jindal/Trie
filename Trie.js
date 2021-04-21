@@ -1,3 +1,7 @@
+/**
+ * Created by aarnavjindal on 07/05/20.
+ */
+
 export { Trie }
 
 class TrieNode{
@@ -46,6 +50,7 @@ class Trie {
         }
         this.add(number, name, pos+1, node.children[number[pos]-'0']);
     }
+
     findAll(node){
         // Contact leaf node
         if(node===null)
@@ -60,7 +65,7 @@ class Trie {
             this.findAll(node.children[i]);
         }
     }
-    
+
     findNext(step){
         if(step===-1){
             this.current = this.current.parent;
@@ -70,16 +75,25 @@ class Trie {
                 this.current.children[step-'0'] = newnode;
                 newnode.parent = this.current;
             }
-            
+
             this.current = this.current.children[step-'0'];
         }
         this.res = [];
         this.findAll(this.current);
         return this.res;
     }
-    
+
     del(number, pos = 0, node = this.root){
         if(pos===number.length-1){
             node.children[number[pos]-'0'] = null;
             return;
         }
+
+        if(node.children[number[pos]-'0']===null){
+            let newnode = new TrieNode();
+            node.children[number[pos]-'0'] = newnode;
+            newnode.parent = node;
+        }
+        this.del(number, pos+1, node.children[number[pos]-'0']);
+    }
+}
